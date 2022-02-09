@@ -33,12 +33,5 @@ public class CategoryResource {
 		Category obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
-	
-	public ResponseEntity<Category> insert(@RequestBody Category obj){
-		obj = service.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).body(obj);
-	}
-		
 
 }
