@@ -24,5 +24,4 @@ public class ClientService {
 		return obj.get();
 	}
 
-
 }

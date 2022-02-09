@@ -23,5 +23,9 @@ public class SellerService {
 		Optional<Seller> obj = repository.findById(id);
 		return obj.get();
 	}
+	
+	public Seller insert(Seller obj) {
+		return repository.save(obj);
+	}
 
 }
