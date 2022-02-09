@@ -1,37 +1,41 @@
 package com.example.register_eder.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.Instant;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_seller")
-public class Seller implements Serializable{
+@Table(name = "tb_client")
+public class Client implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	private Instant moment;
 	
-	@OneToMany(mappedBy = "client")
-	private List<Client> clients = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name = "client_id")
+	private Seller client;
 	
-	public Seller() {
+	public Client() {
 	}
 
-	public Seller(Long id, String name) {
+	public Client(Long id, String name, Instant moment, Seller client) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.moment = moment;
+		this.client = client;
 	}
 
 	public Long getId() {
@@ -49,9 +53,21 @@ public class Seller implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public List<Client> getClients() {
-		return clients;
+
+	public Instant getMoment() {
+		return moment;
+	}
+
+	public void setMoment(Instant moment) {
+		this.moment = moment;
+	}
+
+	public Seller getClient() {
+		return client;
+	}
+
+	public void setClient(Seller client) {
+		this.client = client;
 	}
 
 	@Override
@@ -67,9 +83,8 @@ public class Seller implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Seller other = (Seller) obj;
+		Client other = (Client) obj;
 		return Objects.equals(id, other.id);
 	}
-
-
+	
 }
