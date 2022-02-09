@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.example.register_eder.entities.enums.ClientStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -27,19 +28,22 @@ public class Client implements Serializable{
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'",timezone ="GMT")
 	private Instant moment;
 	
+	private Integer clientStatus;
+	
 	
 	@ManyToOne
-	@JoinColumn(name = "client_id")
+	@JoinColumn(name = "seller_id")
 	private Seller client;
 	
 	public Client() {
 	}
 
-	public Client(Long id, String name, Instant moment, Seller client) {
+	public Client(Long id, String name, Instant moment,ClientStatus clientStatus, Seller client) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.moment = moment;
+		setClientStatus (clientStatus);
 		this.client = client;
 	}
 
@@ -65,6 +69,18 @@ public class Client implements Serializable{
 
 	public void setMoment(Instant moment) {
 		this.moment = moment;
+	}
+	
+	
+
+	public ClientStatus getClientStatus() {
+		return ClientStatus.valueOf(clientStatus);
+	}
+
+	public void setClientStatus(ClientStatus clientStatus) {
+		if (clientStatus != null) {
+			this.clientStatus = clientStatus.getCode();
+		}
 	}
 
 	public Seller getClient() {
