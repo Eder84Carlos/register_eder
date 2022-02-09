@@ -31,5 +31,16 @@ public class SellerService {
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
+	
+	public Seller update(Long id, Seller obj) {
+		Seller entity = repository.getOne(id);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	private void updateData(Seller entity, Seller obj) {
+		entity.setName(obj.getName());
+		
+	}
 
 }
