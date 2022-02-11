@@ -17,3 +17,8 @@
 <img src="https://user-images.githubusercontent.com/91353220/153501204-bfb94595-8633-4d7e-b6af-0af500ab5678.png" width="700px" />
 </div>
 
+#Categoria
+
+<div aling-"Center">
+<img src="https://user-images.githubusercontent.com/91353220/153527553-077ff3c1-43d7-46aa-a25f-5c454bd6bef3.png" width="700px" />
+</div>
