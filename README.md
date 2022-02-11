@@ -2,7 +2,7 @@
 #Back-end
 #Ferramentas usadas
 #Java 11
-#Spring Boot 4
+#Spring Boot
 #JPA
 #Maven
 #Hibernate
